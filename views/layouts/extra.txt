@@ -1,0 +1,169 @@
+  
+
+    ------------------------------------------------------------------------------
+
+    login.ejs
+
+
+    
+
+
+------------------------------------------------------------------------------------------------------------------------------------------------
+
+privacy.ejs
+
+
+ 
+
+-------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+
+signup.ejs
+
+ 
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------------
+
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORKFOLIO - Showcase Your Talent</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body and background */
+        body {
+            background-color: #f7f8fc;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+       /* Header */
+        header {
+            background: linear-gradient(135deg, #1f3c88, #3498db); /* Navy blue to a brighter blue */
+            color: #fff;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            clip-path: ellipse(100% 70% at 50% 30%);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            background-color: #1f3c88;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f0b429; /* Soft gold accent for hover */
+        }
+
+
+        /* Footer */
+        footer {
+            background-color: #1f3c88;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f0b429;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+<body>
+
+ <!-- Header -->
+    <header>
+        <h1>Welcome to WORKFOLIO</h1>
+        <p>Connect, showcase, and grow with a community of creatives, professionals, and freelancers from all fields.</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/signup">Join Us</a>
+        <a href="/login">Login</a>
+        <a href="/contact">Contact</a>
+    </nav>
+   
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 WORKFOLIO. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+</html>
+
+
+
+
+// const dbURI = 'mongodb://localhost:27017/TextTroveDB';
+const dbURI = process.env.ATLASDB_URI;
+mongoose.connect(dbURI, {
+    connectTimeoutMS: 10000,
+}).then(() => console.log('Connected to MongoDB successfully'))
+    .catch((err) => console.error('Failed to connect to MongoDB:', err));
+
+
+mongodb://ramansingh04012005:<db_password>@undefined/?replicaSet=atlas-mypfbx-shard-0&ssl=true&authSource=admin
+
+ Password= "g7aQ84xB4Mqoqewi"
+
+
+-----------------------------------------------------------------------------------------------------
+
+aboutus.ejs
+
+ 
+
+    --------------------------------------------------------------------------------------------------------------------------
+
+
+    contactus.ejs
+
+
+    

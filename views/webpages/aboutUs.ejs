@@ -1,0 +1,354 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORKFOLIO - Showcase Your Talent</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body and background */
+        body {
+            background-color: #f7f8fc;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1f3c88, #3498db);
+            color: #fff;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            clip-path: ellipse(100% 70% at 50% 30%);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: auto;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            background-color: #1f3c88;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f0b429;
+        }
+
+        /* Main content styling */
+        .main-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .main-content h2 {
+            font-size: 2.5rem;
+            color: #1f3c88;
+            margin-bottom: 1rem;
+        }
+
+        .main-content p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: #f0b429;
+            color: #333;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #d09b27;
+        }
+
+        /* Featured Projects */
+        .projects {
+            padding: 2rem;
+            background-color: #e9eef8;
+        }
+
+        .projects h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .project-card {
+            background-color: #fff;
+            width: 300px;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: #f7f8fc;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .testimonials h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial {
+            max-width: 500px;
+            margin: 1.5rem auto;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            color: #666;
+        }
+
+        .testimonial .author {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* About Us Section */
+        .about-content {
+            padding: 2rem;
+            background-color: #e9eef8;
+            text-align: center;
+        }
+
+        .about-content h2 {
+            font-size: 2.5rem;
+            color: #1f3c88;
+            margin-bottom: 1.5rem;
+            text-transform: uppercase;
+        }
+
+        .about-content p {
+            font-size: 1.2rem;
+            color: #333;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.8;
+            margin-bottom: 1.5rem;
+        }
+
+        .about-content p:last-of-type {
+            margin-bottom: 0;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 1024px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .projects h3, .testimonials h3, .about-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .project-card {
+                width: 280px;
+            }
+
+            nav {
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav a {
+                margin: 0.5rem 1rem;
+            }
+        }
+
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .main-content h2 {
+                font-size: 2rem;
+            }
+
+            .main-content p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .cta-button {
+                padding: 0.8rem 1.5rem;
+                font-size: 1rem;
+            }
+
+            .projects h3, .testimonials h3 {
+                font-size: 1.6rem;
+            }
+
+            .project-card {
+                width: 250px;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.8rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+                padding: 0 1rem;
+            }
+
+            .about-content h2 {
+                font-size: 1.8rem;
+            }
+
+            .about-content p {
+                font-size: 1rem;
+                padding: 0 1rem;
+            }
+
+            .cta-button {
+                width: 100%;
+                padding: 0.8rem 1.5rem;
+            }
+
+            .projects h3, .testimonials h3 {
+                font-size: 1.5rem;
+            }
+
+            .project-card {
+                width: 100%;
+            }
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f3c88;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f0b429;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to WORKFOLIO</h1>
+        <p>Connect, showcase, and grow with a community of creatives, professionals, and freelancers from all fields.</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/signup">Join Us</a>
+        <a href="/login">Login</a>
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <!-- About Us Section -->
+    <section class="about-content">
+        <h2>About Us</h2>
+        <p>At WORKFOLIO, we believe in the power of creative collaboration. Whether you're a freelancer, artist, developer, student, or a professional, our platform provides the tools you need to showcase your talent, connect with like-minded individuals, and grow your career.</p>
+        <p>Our goal is to create a vibrant, supportive community where creativity thrives. Join us today and discover new opportunities, share your projects, and connect with people who can help take your work to the next level!</p>
+        <p>Our platform is designed to provide you with a simple, intuitive way to display your work, interact with other users, and build an impressive portfolio that stands out in a competitive digital world.</p>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 WORKFOLIO. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+
+</html>

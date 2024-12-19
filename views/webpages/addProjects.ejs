@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Projects</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body and background */
+        body {
+            background-color: #f7f8fc;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Main content styles */
+        h3 {
+            text-align: center;
+            margin-top: 2rem;
+            font-size: 1.8rem;
+            color: #1f3c88;
+        }
+
+        form {
+            max-width: 600px;
+            margin: 2rem auto;
+            padding: 2rem;
+            background-color: #ffffff;
+            border-radius: 8px;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        form label {
+            display: block;
+            margin-bottom: 0.5rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        form input,
+        form textarea,
+        form button {
+            width: 100%;
+            margin-bottom: 1rem;
+            padding: 0.8rem;
+            font-size: 1rem;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        form input:focus,
+        form textarea:focus {
+            border-color: #1f3c88;
+            outline: none;
+            box-shadow: 0 0 3px rgba(31, 60, 136, 0.5);
+        }
+
+        form button {
+            background-color: #1f3c88;
+            color: #ffffff;
+            border: none;
+            cursor: pointer;
+            font-weight: bold;
+            transition: background-color 0.3s ease;
+        }
+
+        form button:hover {
+            background-color: #1452a3;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f3c88;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f0b429;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            form {
+                padding: 1.5rem;
+            }
+
+            form label {
+                font-size: 0.9rem;
+            }
+
+            form input,
+            form textarea,
+            form button {
+                padding: 0.7rem;
+                font-size: 0.9rem;
+            }
+
+            h3 {
+                font-size: 1.6rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            form {
+                padding: 1rem;
+            }
+
+            form input,
+            form textarea,
+            form button {
+                padding: 0.6rem;
+                font-size: 0.8rem;
+            }
+
+            h3 {
+                font-size: 1.4rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <h3>Add a Project</h3>
+    <form action="/add-project" method="POST">
+        <label for="title">Project Title:</label>
+        <input type="text" id="title" name="title" placeholder="Enter project title" required />
+
+        <label for="description">Description:</label>
+        <textarea id="description" name="description" placeholder="Enter project description"></textarea>
+
+        <label for="link">Project Link:</label>
+        <input type="url" id="link" name="link" placeholder="Enter project URL (optional)" />
+
+        <button type="submit">Add Project</button>
+    </form>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 WORKFOLIO. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+</html>

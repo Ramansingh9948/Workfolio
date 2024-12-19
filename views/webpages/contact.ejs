@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORKFOLIO - Showcase Your Talent</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body and background */
+        body {
+            background-color: #f7f8fc;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1f3c88, #3498db);
+            /* Navy blue to a brighter blue */
+            color: #fff;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            clip-path: ellipse(100% 70% at 50% 30%);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            background-color: #1f3c88;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f0b429;
+            /* Soft gold accent for hover */
+        }
+
+        /* Main content styling */
+        .main-content {
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .main-content h2 {
+            font-size: 2.5rem;
+            color: #1f3c88;
+            margin-bottom: 1rem;
+        }
+
+        .main-content p {
+            font-size: 1.1rem;
+            max-width: 800px;
+            margin: auto;
+            line-height: 1.6;
+            margin-bottom: 2rem;
+        }
+
+        .cta-button {
+            background-color: #f0b429;
+            /* Soft gold for the CTA button */
+            color: #333;
+            padding: 1rem 2rem;
+            font-size: 1.1rem;
+            font-weight: bold;
+            border: none;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        .cta-button:hover {
+            background-color: #d09b27;
+        }
+
+        /* Featured Projects */
+        .projects {
+            padding: 2rem;
+            background-color: #e9eef8;
+        }
+
+        .projects h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+            text-align: center;
+        }
+
+        .project-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 2rem;
+            justify-content: center;
+        }
+
+        .project-card {
+            background-color: #fff;
+            width: 300px;
+            padding: 1.5rem;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            text-align: left;
+        }
+
+        .project-card:hover {
+            transform: translateY(-5px);
+        }
+
+        .project-card h4 {
+            font-size: 1.4rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .project-card p {
+            color: #666;
+            font-size: 0.9rem;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            background-color: #f7f8fc;
+            padding: 2rem;
+            text-align: center;
+        }
+
+        .testimonials h3 {
+            font-size: 2rem;
+            color: #333;
+            margin-bottom: 1.5rem;
+        }
+
+        .testimonial {
+            max-width: 500px;
+            margin: 1.5rem auto;
+            padding: 1.5rem;
+            background-color: #fff;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            font-style: italic;
+            color: #666;
+        }
+
+        .testimonial .author {
+            margin-top: 1rem;
+            font-weight: bold;
+            color: #333;
+        }
+
+        /* Contact Form Section Styling */
+    .contact-form {
+        padding: 2rem;
+        background-color: #e9eef8; /* Light background for contrast */
+        text-align: center;
+    }
+
+    .contact-form h2 {
+        font-size: 2.5rem;
+        color: #1f3c88;
+        margin-bottom: 1rem;
+    }
+
+    .contact-form p {
+        font-size: 1.1rem;
+        color: #333;
+        max-width: 700px;
+        margin: auto;
+        margin-bottom: 2rem;
+        line-height: 1.6;
+    }
+
+    /* Form Styling */
+    .contact-form form {
+        max-width: 600px;
+        margin: auto;
+        padding: 2rem;
+        background-color: #ffffff;
+        border-radius: 10px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        text-align: left;
+    }
+
+    .contact-form form label {
+        display: block;
+        font-weight: bold;
+        color: #1f3c88;
+        margin-bottom: 0.5rem;
+    }
+
+    .contact-form form input[type="text"],
+    .contact-form form input[type="email"],
+    .contact-form form textarea {
+        width: 100%;
+        padding: 0.8rem;
+        margin-bottom: 1.5rem;
+        border: 1px solid #ddd;
+        border-radius: 5px;
+        font-size: 1rem;
+    }
+
+    .contact-form form input[type="text"]:focus,
+    .contact-form form input[type="email"]:focus,
+    .contact-form form textarea:focus {
+        border-color: #3498db;
+        outline: none;
+        box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+    }
+
+    .contact-form form textarea {
+        resize: vertical; /* Allow vertical resizing only */
+    }
+
+    .contact-form form button {
+        background-color: #1f3c88;
+        color: #ffffff;
+        font-size: 1.1rem;
+        font-weight: bold;
+        padding: 0.8rem 2rem;
+        border: none;
+        border-radius: 50px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        width: 100%;
+    }
+
+    .contact-form form button:hover {
+        background-color: #f0b429;
+    }
+
+    /* Responsive Design */
+    @media (max-width: 768px) {
+        .contact-form h2 {
+            font-size: 2rem;
+        }
+
+        .contact-form p {
+            font-size: 1rem;
+        }
+
+        .contact-form form {
+            padding: 1.5rem;
+        }
+    }
+
+        /* Footer */
+        footer {
+            background-color: #1f3c88;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f0b429;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to WORKFOLIO</h1>
+        <p>Connect, showcase, and grow with a community of creatives, professionals, and freelancers from all fields.
+        </p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/privacy">Privacy</a>
+        <a href="/signup">Join Us</a>
+        <a href="/login">Login</a>
+        <a href="/contact">Contact</a>
+    </nav>
+
+
+    <!-- Contact Form Section -->
+    <section class="contact-form">
+        <h2>Contact Us</h2>
+        <p>If you have any questions, comments, or feedback, please fill out the form below:</p>
+
+        <!-- Contact Us Form -->
+        <form action="/contact" method="POST">
+            <label for="name">Your Name:</label>
+            <input type="text" id="name" name="name" required>
+
+            <label for="email">Your Email:</label>
+            <input type="email" id="email" name="email" required>
+
+            <label for="message">Your Message:</label>
+            <textarea id="message" name="message" rows="5" required></textarea>
+
+            <button type="submit">Submit</button>
+        </form>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 WORKFOLIO. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a>
+        </p>
+    </footer>
+
+</body>
+
+</html>

@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Dashboard - Workfolio</title>
+    <style>
+        /* Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body and background */
+        body {
+            background-color: #f4f4f9;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #0046a1, #0073e6);
+            color: #fff;
+            padding: 1rem;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        header h1 {
+            font-size: 1.5rem;
+        }
+
+        header nav {
+            display: flex;
+            flex-wrap: wrap;
+        }
+
+        header nav a {
+            color: #fff;
+            text-decoration: none;
+            margin: 0.5rem;
+            font-weight: bold;
+            transition: color 0.3s ease;
+        }
+
+        header nav a:hover {
+            color: #ffdd00;
+        }
+
+        /* Main container */
+        .container {
+            display: flex;
+            flex-wrap: wrap;
+            padding: 2rem;
+            gap: 1rem;
+        }
+
+        /* Sidebar */
+        .sidebar {
+            width: 100%;
+            max-width: 250px;
+            background-color: #0046a1;
+            color: #fff;
+            padding: 1rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            flex-shrink: 0;
+        }
+
+        .sidebar h2 {
+            font-size: 1.5rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .sidebar ul {
+            list-style: none;
+        }
+
+        .sidebar ul li {
+            margin: 1rem 0;
+        }
+
+        .sidebar ul li a {
+            color: #ffdd00;
+            text-decoration: none;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        .sidebar ul li a:hover {
+            color: #e6c700;
+        }
+
+        /* Main Content */
+        .main-content {
+            flex: 1;
+            background-color: #fff;
+            padding: 2rem;
+            border-radius: 8px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content h2 {
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            color: #0046a1;
+        }
+
+        .main-content .section {
+            margin-bottom: 2rem;
+        }
+
+        .main-content .section h3 {
+            font-size: 1.3rem;
+            margin-bottom: 0.5rem;
+        }
+
+        .main-content .section p {
+            font-size: 1rem;
+            color: #666;
+        }
+
+        .main-content .card {
+            background-color: #f4f4f9;
+            padding: 1.5rem;
+            border-radius: 8px;
+            margin-bottom: 1rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #0046a1;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #ffdd00;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Button Styling */
+        button {
+            background-color: #0046a1;
+            color: #fff;
+            border: none;
+            padding: 0.5rem 1rem;
+            border-radius: 5px;
+            font-size: 0.9rem;
+            cursor: pointer;
+            transition: background-color 0.3s;
+        }
+
+        button:hover {
+            background-color: #0073e6;
+        }
+
+        a {
+            text-decoration: none;
+            color: #0046a1;
+            font-weight: bold;
+            transition: color 0.3s;
+        }
+
+        a:hover {
+            color: #0073e6;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .container {
+                flex-direction: column;
+                padding: 1rem;
+            }
+
+            .sidebar {
+                width: 100%;
+            }
+
+            header {
+                flex-direction: column;
+                align-items: flex-start;
+            }
+
+            header h1 {
+                margin-bottom: 1rem;
+            }
+
+            header nav {
+                flex-wrap: wrap;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.2rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.5rem;
+            }
+            .main-content .section h3 {
+                font-size: 1.2rem;
+            }
+        }
+    </style>
+    <script>
+        // Check for the 'loginSuccess' query parameter and display alert
+        window.onload = function () {
+          const urlParams = new URLSearchParams(window.location.search);
+          if (urlParams.has('loginSuccess')) {
+            alert('You logged in successfully!');
+          }
+        };
+    </script>
+</head>
+<body>
+    <!-- Header -->
+    <header>
+        <h1>Workfolio Dashboard</h1>
+        <nav>
+            <a href="#">Home</a>
+            <a href="#">Profile</a>
+            <a href="#">Settings</a>
+            <a href="/logout">Logout</a>
+        </nav>
+    </header>
+    <!-- Main Container -->
+    <div class="container">
+        <!-- Sidebar -->
+        <aside class="sidebar">
+            <h2>Navigation</h2>
+            <ul>
+                <li><a href="">My Projects</a></li>
+                <li><a href="#">Events</a></li>
+                <li><a href="#">Messages</a></li>
+                <li><a href="#">Connections</a></li>
+                <li><a href="#">Analytics</a></li>
+            </ul>
+        </aside>
+        <!-- Main Content -->
+        <main class="main-content">
+            <h2>Welcome, <%= user.fullname %></h2>
+            <a href="update-profile">Update Profile</a>
+            <!-- Section: Skills -->
+            <div class="section">
+                <h3>Your Skills</h3>
+                <a href="addskill">Add Skill</a>
+                <% user.skills.forEach(skill => { %> 
+                    <p class="card"><%= skill %></p>
+                <% }); %>
+                
+            </div>
+            <!-- Section: Recent Projects -->
+            <div class="section">
+                <h3>Your Projects</h3>
+                <a href="addproject">Add Project</a>
+                <ul>
+                  <% user.projects.forEach(project => { %>
+                    <li class="card" style="list-style-type: none;">
+                      <strong><%= project.title %></strong>
+                      <p><%= project.description %></p>
+                      <% if (project.link) { %>
+                        <a href="<%= project.link %>" target="_blank">View Project</a>
+                      <% } %>
+                      <form action="/remove-project" method="POST" style="display: inline;">
+                        <input type="hidden" name="title" value="<%= project.title %>" />
+                        <button type="submit">Remove</button>
+                      </form>
+                    </li>
+                  <% }); %>
+                </ul>
+            </div>
+        </main>
+
+    </div>
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 Workfolio. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

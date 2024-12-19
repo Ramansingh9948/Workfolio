@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORKFOLIO - Showcase Your Talent</title>
+    <style>
+        /* Basic Reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        body {
+            background-color: #f7f8fc;
+            color: #333;
+            line-height: 1.6;
+        }
+        a {
+            text-decoration: none;
+        }
+        h2{
+            color: #333;
+            text-align: center;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1f3c88, #3498db);
+            color: #fff;
+            text-align: center;
+            padding: 2rem 1rem;
+            clip-path: ellipse(100% 70% at 50% 30%);
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* Navigation */
+        nav {
+            display: flex;
+            justify-content: center;
+            gap: 1rem;
+            background-color: #1f3c88;
+            padding: 1rem 0;
+            flex-wrap: wrap;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            padding: 0.5rem 1rem;
+            font-weight: 500;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f0b429;
+        }
+
+        /* Main Section */
+        .main-content {
+            text-align: center;
+            padding: 2rem 1rem;
+        }
+
+        .main-content h2 {
+            font-size: 2rem;
+            margin-bottom: 1rem;
+            color: #1f3c88;
+        }
+
+        .main-content p {
+            max-width: 700px;
+            margin: auto;
+            font-size: 1rem;
+            color: #555;
+        }
+
+        .cta-button {
+            background-color: #f0b429;
+            color: #333;
+            padding: 0.8rem 2rem;
+            border: none;
+            border-radius: 50px;
+            font-size: 1rem;
+            font-weight: bold;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            margin-top: 1.5rem;
+        }
+
+        .cta-button:hover {
+            background-color: #d09b27;
+        }
+
+        /* User Grid */
+        .user-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 1.5rem;
+            padding: 2rem;
+            max-width: 1200px;
+            margin: auto;
+        }
+
+        .user-card {
+            background-color: #fff;
+            border: 1px solid #ddd;
+            border-radius: 10px;
+            text-align: center;
+            padding: 1.5rem;
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease, box-shadow 0.3s ease;
+        }
+
+        .user-card:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 10px rgba(0, 0, 0, 0.15);
+        }
+
+        .user-card img {
+            width: 80px;
+            height: 80px;
+            border-radius: 50%;
+            object-fit: cover;
+            margin-bottom: 0.8rem;
+        }
+
+        .user-card h4 {
+            font-size: 1.2rem;
+            margin-bottom: 0.5rem;
+            color: #333;
+        }
+
+        .user-card p {
+            font-size: 0.9rem;
+            color: #666;
+            white-space: nowrap;
+            overflow: hidden;
+            text-overflow: ellipsis;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f3c88;
+            color: #fff;
+            text-align: center;
+            padding: 1rem;
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f0b429;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .main-content h2 {
+                font-size: 1.8rem;
+            }
+
+            nav a {
+                padding: 0.5rem 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.5rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .cta-button {
+                padding: 0.6rem 1.5rem;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to WORKFOLIO</h1>
+        <p>Connect, showcase, and grow with a community of creatives, professionals, and freelancers.</p>
+    </header>
+
+    <!-- Navigation -->
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/signup">Signup</a>
+        <a href="/login">Login</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/search">Find Users</a>
+
+        <a href="/contact">Contact</a>
+    </nav>
+
+    <!-- Main Content -->
+    <section class="main-content">
+        <h2>Unleash Your Creativity</h2>
+        <p>Showcase your projects, connect with clients, and grow with endless opportunities on WORKFOLIO.</p>
+        <button class="cta-button">Get Started Now</button>
+    </section>
+    <hr>
+
+    <h2>
+        Users
+    </h2>
+
+    <!-- User Grid -->
+    <section>
+        <div class="user-grid" id="userGrid">
+            <!-- User cards dynamically populated -->
+        </div>
+    </section>
+
+    <script>
+        async function fetchUsers() {
+            try {
+                const response = await fetch('/users');
+                const users = await response.json();
+
+                const userGrid = document.getElementById('userGrid');
+                userGrid.innerHTML = '';
+
+                users.forEach(user => {
+                    const userCard = document.createElement('a');
+                    userCard.classList.add('user-card');
+                    userCard.href = `/user/${user.username}`;
+                    userCard.innerHTML = `
+                        <h4>${user.fullname}</h4>
+                        <p>${user.skills || 'No skills available'}</p>
+                    `;
+                    userGrid.appendChild(userCard);
+                });
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        }
+
+        window.onload = fetchUsers;
+    </script>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 WORKFOLIO. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+
+</html>

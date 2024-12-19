@@ -1,0 +1,273 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WORKFOLIO - Showcase Your Talent</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Arial', sans-serif;
+        }
+
+        /* Body and background */
+        body {
+            background-color: #f7f8fc;
+            color: #333;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+        }
+
+        /* Main container */
+        .container {
+            max-width: 900px;
+            margin: 2rem auto;
+            padding: 1rem 2rem;
+            background-color: #ffffff;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            border-radius: 8px;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1f3c88, #3498db);
+            color: #fff;
+            padding: 2rem 1.5rem;
+            text-align: center;
+            clip-path: ellipse(100% 70% at 50% 30%);
+        }
+
+        header h1 {
+            font-size: 3rem;
+            font-weight: 700;
+            margin-bottom: 0.5rem;
+        }
+
+        header p {
+            font-size: 1.2rem;
+            max-width: 600px;
+            margin: auto;
+        }
+
+        /* User Header */
+        .user-header {
+            text-align: center;
+            margin-bottom: 2rem;
+        }
+
+        .user-header h1 {
+            font-size: 2rem;
+            color: #1f3c88;
+            margin-bottom: 0.5rem;
+        }
+
+        .user-header h1 span {
+            font-size: 1.2rem;
+            color: #777;
+        }
+
+        /* Section Headers */
+        h3 {
+            color: #1f3c88;
+            border-bottom: 2px solid #1f3c88;
+            padding-bottom: 0.5rem;
+            margin-bottom: 1rem;
+        }
+
+        /* Skills Section */
+        ul.skills {
+            list-style: none;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            padding: 0;
+        }
+
+        ul.skills li {
+            background-color: #f0f0f0;
+            color: #555;
+            padding: 0.5rem 1rem;
+            border-radius: 20px;
+            font-size: 0.9rem;
+        }
+
+        /* Projects Section */
+        ul.projects {
+            list-style: none;
+            padding: 0;
+        }
+
+        ul.projects li {
+            margin-bottom: 1.5rem;
+            padding: 1rem;
+            background-color: #f9f9f9;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        ul.projects li strong {
+            font-size: 1.2rem;
+            color: #1f3c88;
+        }
+
+        ul.projects li p {
+            margin: 0.5rem 0;
+            color: #666;
+        }
+
+        ul.projects li a {
+            display: inline-block;
+            margin-top: 0.5rem;
+            padding: 0.5rem 1rem;
+            background-color: #1f3c88;
+            color: #ffffff;
+            text-decoration: none;
+            border-radius: 4px;
+            font-size: 0.9rem;
+        }
+
+        ul.projects li a:hover {
+            background-color: #f0b429;
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f3c88;
+            color: #ffffff;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+            border-top-left-radius: 8px;
+            border-top-right-radius: 8px;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f0b429;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Media Queries for Responsiveness */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2.5rem;
+            }
+
+            header p {
+                font-size: 1rem;
+            }
+
+            .user-header h1 {
+                font-size: 1.8rem;
+            }
+
+            ul.skills {
+                flex-direction: column;
+                align-items: center;
+            }
+
+            ul.skills li {
+                margin: 0.3rem 0;
+                font-size: 0.85rem;
+            }
+
+            ul.projects li {
+                padding: 1rem;
+                font-size: 0.95rem;
+            }
+
+            ul.projects li a {
+                padding: 0.5rem 1rem;
+                font-size: 0.85rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            header p {
+                font-size: 0.9rem;
+            }
+
+            .user-header h1 {
+                font-size: 1.6rem;
+            }
+
+            ul.skills li {
+                font-size: 0.8rem;
+            }
+
+            ul.projects li {
+                padding: 0.8rem;
+                font-size: 0.9rem;
+            }
+
+            ul.projects li a {
+                padding: 0.4rem 0.8rem;
+                font-size: 0.8rem;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Header -->
+    <header>
+        <h1>Welcome to WORKFOLIO</h1>
+        <p>Connect, showcase, and grow with a community of creatives, professionals, and freelancers from all fields.</p>
+    </header>
+
+    <!-- Navigation -->
+    <div class="container">
+        <!-- User Header -->
+        <div class="user-header">
+            <h1>
+                <%= user.name %> <span>(@<%= user.username %>)</span>
+            </h1>
+        </div>
+
+        <!-- Skills Section -->
+        <h3>Skills</h3>
+        <ul class="skills">
+            <% user.skills.forEach(skill => { %>
+                <li><%= skill %></li>
+            <% }); %>
+        </ul>
+
+        <!-- Projects Section -->
+        <h3>Projects</h3>
+        <ul class="projects">
+            <% user.projects.forEach(project => { %>
+                <li>
+                    <strong><%= project.title %></strong>
+                    <p><%= project.description %></p>
+                    <% if (project.link) { %>
+                        <a href="<%= project.link %>" target="_blank">View Project</a>
+                    <% } %>
+                </li>
+            <% }); %>
+        </ul>
+    </div>
+
+    <!-- Footer -->
+    <footer>
+        <p>&copy; 2024 WORKFOLIO. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+</body>
+</html>

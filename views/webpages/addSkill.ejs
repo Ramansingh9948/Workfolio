@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Add Skills</title>
+    <style>
+        /* Basic reset */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        /* Body styling */
+        body {
+            background-color: #f7f8fc;
+            color: #333;
+        }
+
+        /* Header */
+        header {
+            background: linear-gradient(135deg, #1f3c88, #3498db);
+            color: #fff;
+            padding: 1.5rem 2rem;
+            text-align: center;
+            clip-path: ellipse(100% 70% at 50% 30%);
+            margin-bottom: 2rem;
+        }
+
+        header h1 {
+            font-size: 2.5rem;
+            font-weight: bold;
+        }
+
+        /* Main content */
+        .main-content {
+            max-width: 800px;
+            margin: 0 auto;
+            padding: 2rem;
+            background-color: #fff;
+            border-radius: 8px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+        }
+
+        .main-content h3 {
+            color: #1f3c88;
+            font-size: 1.8rem;
+            margin-bottom: 1rem;
+            text-align: center;
+        }
+
+        .main-content form {
+            margin-bottom: 2rem;
+        }
+
+        form label {
+            display: block;
+            font-weight: bold;
+            margin-bottom: 0.5rem;
+            color: #1f3c88;
+        }
+
+        form input[type="text"] {
+            width: 100%;
+            padding: 0.8rem;
+            margin-bottom: 1rem;
+            border: 1px solid #ddd;
+            border-radius: 5px;
+            font-size: 1rem;
+            transition: border-color 0.3s ease;
+        }
+
+        form input[type="text"]:focus {
+            border-color: #3498db;
+            outline: none;
+            box-shadow: 0 0 5px rgba(52, 152, 219, 0.5);
+        }
+
+        form button {
+            background-color: #1f3c88;
+            color: #fff;
+            border: none;
+            padding: 0.8rem 1.5rem;
+            font-size: 1rem;
+            font-weight: bold;
+            border-radius: 50px;
+            cursor: pointer;
+            transition: background-color 0.3s;
+            display: block;
+            width: 100%;
+        }
+
+        form button:hover {
+            background-color: #f0b429;
+        }
+
+        /* Skills List */
+        .skills-list {
+            text-align: center;
+        }
+
+        .skills-list ul {
+            list-style: none;
+            margin: 1rem 0;
+            padding: 0;
+        }
+
+        .skills-list li {
+            background-color: #f0f0f0;
+            padding: 0.8rem;
+            margin: 0.5rem 0;
+            border-radius: 5px;
+            font-size: 1rem;
+            color: #333;
+            display: inline-block;
+            width: auto;
+            min-width: 150px;
+            text-align: center;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
+        }
+
+        /* Footer */
+        footer {
+            background-color: #1f3c88;
+            color: #fff;
+            padding: 1rem;
+            text-align: center;
+            margin-top: 2rem;
+        }
+
+        footer p {
+            font-size: 0.9rem;
+        }
+
+        footer a {
+            color: #f0b429;
+            text-decoration: none;
+        }
+
+        footer a:hover {
+            text-decoration: underline;
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+
+            .main-content {
+                padding: 1.5rem;
+            }
+
+            .main-content h3 {
+                font-size: 1.5rem;
+            }
+
+            form input[type="text"], form button {
+                padding: 0.75rem;
+                font-size: 0.95rem;
+            }
+
+            .skills-list li {
+                font-size: 0.9rem;
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            footer p {
+                font-size: 0.8rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            header h1 {
+                font-size: 1.6rem;
+            }
+
+            .main-content {
+                padding: 1rem;
+            }
+
+            .main-content h3 {
+                font-size: 1.4rem;
+            }
+
+            form input[type="text"], form button {
+                padding: 0.6rem;
+                font-size: 0.9rem;
+            }
+
+            .skills-list li {
+                font-size: 0.8rem;
+                width: 100%;
+                margin: 0.5rem 0;
+            }
+
+            footer p {
+                font-size: 0.7rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <header>
+        <h1>Workfolio: Add Skills</h1>
+    </header>
+
+    <div class="main-content">
+        <h3>Add Your Skills</h3>
+        <form action="/add-skill" method="POST">
+            <label for="skill">Skill</label>
+            <input type="text" id="skill" name="skill" placeholder="Enter a skill (e.g., JavaScript)" required />
+            <button type="submit">Add Skill</button>
+        </form>
+
+        <div class="skills-list">
+            <h3>Your Skills</h3>
+            <ul>
+                <% for (let skill of user.skills) { %>
+                    <li><%= skill %></li>
+                <% } %>
+            </ul>
+        </div>
+    </div>
+
+    <footer>
+        <p>&copy; 2024 WORKFOLIO. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
+    </footer>
+
+</body>
+</html>
