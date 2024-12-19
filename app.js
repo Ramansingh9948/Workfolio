@@ -356,7 +356,7 @@ app.get('/user/:username', async (req, res) => {
     if (!user) {
       return res.status(404).send('User not found.');
     }
-    res.render('Webpages/profile', { user }); // Render the user's profile page
+    res.render('webpages/profile', { user }); // Render the user's profile page
   } catch (err) {
     console.error('Error fetching profile:', err);
     res.status(500).send('Server error.');
