@@ -10,6 +10,7 @@ const User = require('./models/User');
 const Contact = require('./models/Contact');
 require('./config/passport')(passport);
 const app = express();
+const PORT = process.env.PORT || 3001; // Use environment port or default to 3001
 
 
 require('dotenv').config();  // Load environment variables
@@ -361,4 +362,4 @@ app.get('/user/:username', async (req, res) => {
     res.status(500).send('Server error.');
   }
 });
-app.listen(3001, () => console.log('Server running on port 3001'));
+app.listen(PORT, () => console.log('Server running on port ${PORT}'));
