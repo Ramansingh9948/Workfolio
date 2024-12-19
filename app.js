@@ -90,7 +90,6 @@ app.get("/dashboard", isAuthenticated, async (req, res) => {
   // const user = await User.findById(id);
   // if(!user) res.status(404).send('User not found');
   try {
-    console.log(req.user);
     res.render("webpages/user-dashboard.ejs", { user: req.user });
   } catch (err) {
     console.log('Error while fetching the user', err);
@@ -134,7 +133,6 @@ app.post('/signup', async (req, res) => {
 
     // Create a new user with password hashing handled by passport-local-mongoose
     const newUser = new User({ fullname, username, email, usertype }); // Include username
-    console.log(newUser);
 
     User.register(newUser, password, (err, user) => {
       if (err) {
@@ -182,7 +180,7 @@ app.get('/logout', (req, res) => {
 app.get("/addskill", isAuthenticated, async (req, res) => {
 
   try {
-    console.log(req.user);
+
     res.render("webpages/addSkill.ejs", { user: req.user });
   } catch (err) {
     console.log('Error while fetching the user', err);
@@ -228,7 +226,6 @@ app.post('/add-skill', async (req, res) => {
 //Rendering the Project From
 app.get("/addProject", isAuthenticated, async (req, res) => {
   try {
-    console.log(req.user);
     res.render("webpages/addProjects.ejs", { user: req.user });
   } catch (err) {
     console.log('Error while fetching the user', err);
@@ -298,7 +295,6 @@ app.post('/contact', async (req, res) => {
       email,
       message
     });
-    console.log(newContact);
     // Save the document to MongoDB
     await newContact.save();
 
