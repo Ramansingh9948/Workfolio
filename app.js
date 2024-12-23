@@ -10,6 +10,7 @@ const User = require('./models/User');
 const Contact = require('./models/Contact');
 require('./config/passport')(passport);
 const app = express();
+const PORT = process.env.PORT || 3001; // Use environment port or default to 3001
 
 
 require('dotenv').config();  // Load environment variables
@@ -89,7 +90,6 @@ app.get("/dashboard", isAuthenticated, async (req, res) => {
   // const user = await User.findById(id);
   // if(!user) res.status(404).send('User not found');
   try {
-    console.log(req.user);
     res.render("webpages/user-dashboard.ejs", { user: req.user });
   } catch (err) {
     console.log('Error while fetching the user', err);
@@ -133,7 +133,6 @@ app.post('/signup', async (req, res) => {
 
     // Create a new user with password hashing handled by passport-local-mongoose
     const newUser = new User({ fullname, username, email, usertype }); // Include username
-    console.log(newUser);
 
     User.register(newUser, password, (err, user) => {
       if (err) {
@@ -181,7 +180,7 @@ app.get('/logout', (req, res) => {
 app.get("/addskill", isAuthenticated, async (req, res) => {
 
   try {
-    console.log(req.user);
+
     res.render("webpages/addSkill.ejs", { user: req.user });
   } catch (err) {
     console.log('Error while fetching the user', err);
@@ -227,7 +226,6 @@ app.post('/add-skill', async (req, res) => {
 //Rendering the Project From
 app.get("/addProject", isAuthenticated, async (req, res) => {
   try {
-    console.log(req.user);
     res.render("webpages/addProjects.ejs", { user: req.user });
   } catch (err) {
     console.log('Error while fetching the user', err);
@@ -297,7 +295,6 @@ app.post('/contact', async (req, res) => {
       email,
       message
     });
-    console.log(newContact);
     // Save the document to MongoDB
     await newContact.save();
 
@@ -364,6 +361,7 @@ app.get('/search', async (req, res) => {
 
 app.get('/user/:username', async (req, res) => {
   try {
+<<<<<<< HEAD
       const user = await User.findOne({ username: req.params.username })
           .populate('followers')
           .populate('following');
@@ -443,3 +441,16 @@ app.get("/*", (req, res) =>{
   res.render("webpages/error");
 })
 app.listen(3001, () => console.log('Server running on port 3001'));
+=======
+    const user = await User.findOne({ username }).select('-password -email'); // Exclude sensitive data
+    if (!user) {
+      return res.status(404).send('User not found.');
+    }
+    res.render('webpages/profile', { user }); // Render the user's profile page
+  } catch (err) {
+    console.error('Error fetching profile:', err);
+    res.status(500).send('Server error.');
+  }
+});
+app.listen(PORT, () => console.log('Server running on port ${PORT}'));
+>>>>>>> 5368d6362ae9383d8633179428f3781f4b8819fc
