@@ -164,7 +164,7 @@ app.post('/login', (req, res, next) => {
         return next(err);
       }
       // Redirect to dashboard with a success flag
-      res.redirect('/dashboard?loginSuccess=true');
+      res.redirect('/dashboard');
     });
   })(req, res, next);
 });
@@ -348,17 +348,98 @@ app.get('/search', async (req, res) => {
   }
 });
 
+// app.get('/user/:username', async (req, res) => {
+//   const { username } = req.params;
+//   try {
+//     const user = await User.findOne({ username }).select('-password -email'); // Exclude sensitive data
+//     if (!user) {
+//       return res.status(404).send('User not found.');
+//     }
+//     res.render('webpages/profile', { user }); // Render the user's profile page
+//   } catch (err) {
+//     console.error('Error fetching profile:', err);
+//     res.status(500).send('Server error.');
+//   }
+// });
+
 app.get('/user/:username', async (req, res) => {
-  const { username } = req.params;
   try {
-    const user = await User.findOne({ username }).select('-password -email'); // Exclude sensitive data
-    if (!user) {
-      return res.status(404).send('User not found.');
-    }
-    res.render('Webpages/profile', { user }); // Render the user's profile page
-  } catch (err) {
-    console.error('Error fetching profile:', err);
-    res.status(500).send('Server error.');
+      const user = await User.findOne({ username: req.params.username })
+          .populate('followers')
+          .populate('following');
+      const currentUser = req.user;
+
+      if (!user) {
+          return res.status(404).send("User not found");
+      }
+
+      res.render('webpages/profile', { user, currentUser });
+  } catch (error) {
+      console.error(error);
+      res.status(500).send("Internal Server Error");
   }
 });
+
+// Follow Route
+app.post('/follow', async (req, res) => {
+    const { userId, targetUserId } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        const targetUser = await User.findById(targetUserId);
+
+        // Ensure user is not following themselves
+        if (userId === targetUserId) {
+            return res.status(400).send("You cannot follow yourself.");
+        }
+
+        // Add target user to user's following list
+        if (!user.following.includes(targetUserId)) {
+            user.following.push(targetUserId);
+            await user.save();
+
+            // Add user to target user's followers list
+            targetUser.followers.push(userId);
+            await targetUser.save();
+
+            return res.status(200).send("Followed successfully.");
+        } else {
+            return res.status(400).send("Already following this user.");
+        }
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send("An error occurred while following the user.");
+    }
+});
+
+
+// Unfollow Route
+app.post('/unfollow', async (req, res) => {
+    const { userId, targetUserId } = req.body;
+
+    try {
+        const user = await User.findById(userId);
+        const targetUser = await User.findById(targetUserId);
+
+        // Remove target user from user's following list
+        user.following = user.following.filter(id => id.toString() !== targetUserId);
+        await user.save();
+
+        // Remove user from target user's followers list
+        targetUser.followers = targetUser.followers.filter(id => id.toString() !== userId);
+        await targetUser.save();
+
+        return res.status(200).send("Unfollowed successfully.");
+    } catch (error) {
+        console.error(error);
+        return res.status(500).send("An error occurred while unfollowing the user.");
+    }
+});
+
+
+
+
+app.get("/*", (req, res) =>{
+  res.render("webpages/error");
+})
 app.listen(3001, () => console.log('Server running on port 3001'));

@@ -112,7 +112,7 @@
             gap: 1.5rem;
             padding: 2rem;
             max-width: 1200px;
-            margin: auto;
+            margin: 50px;
         }
 
         .user-card {
@@ -151,6 +151,25 @@
             overflow: hidden;
             text-overflow: ellipsis;
         }
+        .user-card {
+    position: relative;
+}
+
+.tooltip {
+    position: absolute;
+    top: 100%;
+    left: 50%;
+    transform: translateX(-50%);
+    background-color: #333;
+    color: #fff;
+    padding: 0.5rem;
+    border-radius: 5px;
+    font-size: 0.8rem;
+    box-shadow: 0 2px 4px rgba(0, 0, 0, 0.2);
+    white-space: nowrap;
+    z-index: 10;
+}
+
 
         /* Footer */
         footer {
@@ -241,7 +260,7 @@
         </div>
     </section>
 
-    <script>
+    <!-- <script>
         async function fetchUsers() {
             try {
                 const response = await fetch('/users');
@@ -266,13 +285,63 @@
         }
 
         window.onload = fetchUsers;
-    </script>
+    </script> -->
 
     <!-- Footer -->
     <footer>
         <p>&copy; 2024 WORKFOLIO. All rights reserved. <a href="#">Privacy Policy</a> | <a href="#">Terms of Service</a></p>
     </footer>
 
+    <script>
+        async function fetchUsers() {
+            try {
+                const response = await fetch('/users');
+                if (!response.ok) {
+                    throw new Error(`HTTP error! status: ${response.status}`);
+                }
+    
+                const users = await response.json();
+                const userGrid = document.getElementById('userGrid');
+                userGrid.innerHTML = '';
+    
+                users.forEach(user => {
+                    const userCard = document.createElement('div');
+                    userCard.classList.add('user-card');
+                    userCard.innerHTML = `
+                        <h4>${user.fullname}</h4>
+                        <p>${user.skills || 'No skills available'}</p>
+                        <div class="tooltip">
+                            Followers: ${user.followers.length+1 || 0}
+                            Following: ${user.following.length+1 || 0}
+                        </div>
+                    `;
+    
+                    // Add hover effect for the tooltip
+                    const tooltip = userCard.querySelector('.tooltip');
+                    tooltip.style.display = 'none';
+    
+                    userCard.addEventListener('mouseover', () => {
+                        tooltip.style.display = 'block';
+                    });
+    
+                    userCard.addEventListener('mouseout', () => {
+                        tooltip.style.display = 'none';
+                    });
+                    userCard.addEventListener('click', () => {
+                        
+    window.location.href = `/user/${user.username}`;
+});
+
+                    userGrid.appendChild(userCard);
+                });
+            } catch (error) {
+                console.error('Error fetching users:', error);
+            }
+        }
+    
+        window.onload = fetchUsers;
+    </script>
+    
 </body>
 
 </html>

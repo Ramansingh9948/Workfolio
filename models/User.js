@@ -64,6 +64,9 @@ const userSchema = new mongoose.Schema({
     type: Date,
     default: Date.now,
   },
+  followers: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }], // Array of follower user IDs
+  following: [{ type: mongoose.Schema.Types.ObjectId, ref: 'User' }]  // Array of following user IDs
+
 });
 
 // Add passport-local-mongoose plugin to the schema

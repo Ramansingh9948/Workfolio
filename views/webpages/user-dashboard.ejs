@@ -235,8 +235,8 @@
     <header>
         <h1>Workfolio Dashboard</h1>
         <nav>
-            <a href="#">Home</a>
-            <a href="#">Profile</a>
+            <a href="/">Home</a>
+            <a href="/dashboard">Profile</a>
             <a href="#">Settings</a>
             <a href="/logout">Logout</a>
         </nav>
@@ -259,6 +259,17 @@
             <h2>Welcome, <%= user.fullname %></h2>
             <a href="update-profile">Update Profile</a>
             <!-- Section: Skills -->
+                     <!-- Section: Followers and Following -->
+        <div class="section">
+            <h3>Connections</h3>
+            <p>
+                <strong>Total Followers:</strong> <%= user.followers.length %>
+            </p>
+            <p>
+                <strong>Total Following:</strong> <%= user.following.length %>
+            </p>
+        </div>
+
             <div class="section">
                 <h3>Your Skills</h3>
                 <a href="addskill">Add Skill</a>
