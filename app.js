@@ -48,6 +48,14 @@ app.use(session({
 app.use(passport.initialize());
 app.use(passport.session());
 
+
+// Middleware to make flash messages available in all views
+app.use((req, res, next) => {
+  res.locals.currentUser = req.user;
+  next();
+});
+
+
 // middleware for authentication wheather user exist or not 
 const isAuthenticated = (req, res, next) => {
   if (req.isAuthenticated()) {

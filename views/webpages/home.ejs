@@ -233,13 +233,24 @@
     <nav>
         <a href="/">Home</a>
         <a href="/about">About</a>
-        <a href="/signup">Signup</a>
-        <a href="/login">Login</a>
         <a href="/dashboard">Dashboard</a>
         <a href="/search">Find Users</a>
-
         <a href="/contact">Contact</a>
+
+
+        <%if(currentUser){%>
+            <a href="/logout">Logout</a>
+            <a href="/dashboard"><%= currentUser .fullname %></a>
+
+  
+         <% } %>
+          <%if(!currentUser){ %>
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Login</a>
+        <%  } %>
+
     </nav>
+
 
     <!-- Main Content -->
     <section class="main-content">

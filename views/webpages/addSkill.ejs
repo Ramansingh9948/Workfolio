@@ -33,6 +33,27 @@
             font-size: 2.5rem;
             font-weight: bold;
         }
+                /* Navigation */
+                nav {
+            display: flex;
+            justify-content: center;
+            gap: 1.5rem;
+            padding: 1rem 0;
+            background-color: #1f3c88;
+        }
+
+        nav a {
+            color: #ffffff;
+            text-decoration: none;
+            font-weight: 500;
+            padding: 0.5rem 1rem;
+            transition: color 0.3s ease;
+        }
+
+        nav a:hover {
+            color: #f0b429; /* Soft gold accent for hover */
+        }
+
 
         /* Main content */
         .main-content {
@@ -208,6 +229,26 @@
     <header>
         <h1>Workfolio: Add Skills</h1>
     </header>
+    <nav>
+        <a href="/">Home</a>
+        <a href="/about">About</a>
+        <a href="/dashboard">Dashboard</a>
+        <a href="/search">Find Users</a>
+        <a href="/contact">Contact</a>
+
+
+        <%if(currentUser){%>
+            <a href="/logout">Logout</a>
+            <a href="/dashboard"><%= currentUser .fullname %></a>
+
+  
+         <% } %>
+          <%if(!currentUser){ %>
+            <a href="/signup">Sign Up</a>
+            <a href="/login">Login</a>
+        <%  } %>
+
+    </nav>
 
     <div class="main-content">
         <h3>Add Your Skills</h3>
