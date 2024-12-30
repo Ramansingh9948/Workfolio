@@ -8,6 +8,7 @@ const passport = require('passport');
 const session = require('express-session');
 const User = require('./models/User');
 const Contact = require('./models/Contact');
+const Visit = require("./models/visit.js");
 require('./config/passport')(passport);
 const app = express();
 const PORT = process.env.PORT || 3001; // Use environment port or default to 3001
@@ -73,9 +74,34 @@ const isAuthenticated = (req, res, next) => {
 
 
 
-app.get("/", (req, res) => {
-  res.render('webpages/home', { title: 'Home Page' });
-})
+
+// Routes
+app.get("/", async (req, res) => {
+  try {
+    const clientIp = req.headers["x-forwarded-for"] || req.connection.remoteAddress; // Get visitor IP
+    let visit = await Visit.findOne();
+
+    if (!visit) {
+      // Create the first record
+      visit = new Visit({ totalVisits: 1, uniqueVisitors: 1, visitors: [clientIp] });
+    } else {
+      visit.totalVisits += 1; // Increment total visits
+
+      // Check if the IP is unique
+      if (!visit.visitors.includes(clientIp)) {
+        visit.uniqueVisitors += 1;
+        visit.visitors.push(clientIp); // Add new IP to the list
+      }
+    }
+
+    await visit.save();
+
+    res.render("webpages/home", {   visit , title: 'Home || WorkFolio '});
+  } catch (err) {
+    console.error("Error handling request:", err);
+    res.status(500).send("Internal Server Error");
+  }
+});
 
 app.get("/signup", (req, res) => {
   res.render("webpages/signup.ejs");

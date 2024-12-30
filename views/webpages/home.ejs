@@ -68,7 +68,33 @@
         nav a:hover {
             color: #f0b429;
         }
+   /* Visitors Section */
+   .visitors {
+  text-align: center;
+  margin: 40px 0;
+  padding: 20px;
+  background-color: #fff;
+  box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
+  border-radius: 12px;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
 
+.visitors:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+}
+
+.visitors h3 {
+  font-size: 1.8rem;
+  color: #4a90e2;
+  font-weight: 700;
+}
+
+.visitors p {
+  font-size: 1.2rem;
+  color: #666;
+  margin-top: 10px;
+}
         /* Main Section */
         .main-content {
             text-align: center;
@@ -259,7 +285,13 @@
         <button class="cta-button">Get Started Now</button>
     </section>
     <hr>
-
+    <div class="container">
+        <div class="visitors">
+          <h3>Total Number of Visitors:</h3>
+          <p><%= visit.totalVisits %></p>
+        </div>
+      </div>
+      <hr>
     <h2>
         Users
     </h2>
@@ -326,7 +358,6 @@
                             Following: ${user.following.length || 0}
                         </div>
                     `;
-    
                     // Add hover effect for the tooltip
                     const tooltip = userCard.querySelector('.tooltip');
                     tooltip.style.display = 'none';
